@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="136.0" prefWidth="747.0" style="-fx-background-color: #e5eff1;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="FX.ReplayController">
+   <children>
+      <HBox alignment="CENTER_LEFT" prefHeight="111.0" prefWidth="756.0" AnchorPane.bottomAnchor="-27.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="-34.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <ImageView fitHeight="60.0" fitWidth="54.0" layoutY="6.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/profile.png" />
+               </image>
+               <HBox.margin>
+                  <Insets bottom="70.0" />
+               </HBox.margin>
+            </ImageView>
+            <VBox>
+               <children>
+                  <HBox>
+                     <children>
+                        <Label text="Person :" textFill="#0e6e89">
+                           <font>
+                              <Font name="System Bold" size="12.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="userName" onMouseClicked="#actionbt" prefHeight="17.0" prefWidth="69.0" text="userName">
+                           <HBox.margin>
+                              <Insets left="10.0" right="30.0" />
+                           </HBox.margin>
+                           <font>
+                              <Font name="System Bold" size="12.0" />
+                           </font>
+                        </Label>
+                        <Label text="Date :" textFill="#0e6e89">
+                           <font>
+                              <Font name="System Bold" size="12.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="date" text=" Date" />
+                     </children>
+                  </HBox>
+                  <TextArea fx:id="reason" editable="false" prefHeight="59.0" prefWidth="606.0" />
+               </children>
+            </VBox>
+         </children>
+      </HBox>
+   </children>
+</AnchorPane>

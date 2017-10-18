@@ -1,0 +1,108 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:p="http://primefaces.org/ui" template="/template/index.xhtml">
+
+	<ui:define name="content">
+		<h:panelGroup rendered="#{autentificationBean.logged}">
+
+			<section class="inner-headings">
+				<div class="container text-left">
+					<div class="row clearfix">
+						<div class="profile-head-area clearfix">
+							<div class="profile-photo">
+								<img
+									src="#{request.contextPath}/resources/img/profile-photo.jpg"
+									alt="" />
+							</div>
+							<div class="prof-headings">
+								<h3 class="animated" data-animation="fadeInUp"
+									data-animation-delay="100">#{userviewBean.view.userName}</h3>
+								<h5 class="uppercase animated" data-animation="fadeInUp"
+									data-animation-delay="200">
+									<i class="fi-mountains"></i> #{userviewBean.view.email}
+								</h5>
+								<hr class="animated" data-animation="fadeInUp"
+									data-animation-delay="300"></hr>
+							</div>
+						</div>
+						<h:form>
+							<div class="profile-btns-main">
+								<h:commandLink action="#{userviewBean.addfriendreq()}"
+									value="Send Friend request" styleClass="apply-btn" />
+								<h:commandLink action="ProposeJob?faces-redirect=true"
+									value="Propose a Job" styleClass="bookmark-btn" />
+								<i class="fi-bookmark"></i><sup><i class="fi-plus"></i></sup>
+							</div>
+						</h:form>
+					</div>
+				</div>
+			</section>
+			<section class="inner-full-cont">
+				<div class="container">
+					<div class="row clearfix">
+						<div class="col-md-12 full-width-area">
+							<div id="tab-container" class="tab-container animated"
+								data-animation="fadeInUp" data-animation-delay="100">
+								
+								<div class="panel-container">
+									<div class="tab-cont" id="tab-01">
+										<ul class="info-list clearfix">
+											<li><label><i class="fi-calendar"></i> first
+													name</label> <span>#{userviewBean.view.firstName}</span></li>
+											<li><label><i class="fi-calendar"></i> last name</label>
+												<span>#{userviewBean.view.lastName}</span></li>
+
+										</ul>
+									</div>
+									<div class="tab-cont" id="tab-02">
+										<ul class="info-list clearfix">
+											<li><label><i class="fi-calendar"></i> phone</label> <span>#{userviewBean.view.phone}</span></li>
+											<li><label><i class="fi-calendar"></i> adress</label> <span>#{userviewBean.view.adress}</span></li>
+										</ul>
+									</div>
+								</div>
+							</div>
+							<p>
+								<a class="lined-tab overview-btn animated"
+									data-animation="fadeInUp" data-animation-delay="100">Overview</a>
+							</p>
+							<div class="overview-detail animated" data-animation="fadeInUp"
+								data-animation-delay="200">
+								
+								<div class="details-lists">
+									<h6>EXPERTISES</h6>
+									<div>
+										<!-- ici expertise -->
+										<ul class="time-iconed">
+											<c:forEach var="exp"
+												items="#{userviewBean.view.expertises}">
+												<li><h:outputText value="#{exp.name}" /></li>
+											</c:forEach>
+										</ul>
+										<br />
+
+									</div>
+
+
+									<h6>Done Jobs</h6>
+									<ul class="time-iconed">
+										<c:forEach var="don"
+											items="#{userviewBean.view.doneJobs}">
+											<li><h:outputText value="#{don.text}" /></li>
+										</c:forEach>
+
+									</ul>
+								</div>
+							</div>
+						</div>
+						
+					</div>
+				</div>
+			</section>
+			
+		</h:panelGroup>
+	</ui:define>
+</ui:composition>

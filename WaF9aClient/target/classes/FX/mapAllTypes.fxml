@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.*?>
+<?import javafx.scene.paint.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.*?>
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="628.0" prefWidth="941.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="FX.mapAllTypesController">
+   <children>
+      <AnchorPane layoutX="6.0" layoutY="12.0" prefHeight="470.0" prefWidth="771.0" AnchorPane.bottomAnchor="165.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="21.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <ImageView pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/fondMap.jpeg" />
+               </image>
+            </ImageView>
+            <TitledPane collapsible="false" layoutX="12.0" layoutY="71.0" prefHeight="551.0" prefWidth="908.0" text="map">
+               <content>
+                  <GridPane fx:id="mapF" layoutX="40.0" layoutY="83.0" maxHeight="643.0" maxWidth="1059.0" prefHeight="431.0" prefWidth="846.0" AnchorPane.bottomAnchor="-131.0" AnchorPane.leftAnchor="40.0" AnchorPane.rightAnchor="40.0" AnchorPane.topAnchor="83.0">
+                    <columnConstraints>
+                      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                    </columnConstraints>
+                    <rowConstraints>
+                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                    </rowConstraints>
+                  </GridPane>
+               </content>
+            </TitledPane>
+            <SplitPane dividerPositions="0.5, 0.5" layoutX="375.0" layoutY="34.0" prefHeight="27.0" prefWidth="223.0" AnchorPane.leftAnchor="375.0" AnchorPane.rightAnchor="322.0">
+               <items>
+                  <Button fx:id="OffersMarkers" layoutX="727.0" layoutY="53.0" mnemonicParsing="false" onAction="#OffersMarkersAction" prefHeight="25.0" prefWidth="54.0" style="-fx-background-color: #e4ebfb;" text="Offers" textFill="#37518a">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="DoneJobsMarkers" layoutX="664.0" layoutY="53.0" mnemonicParsing="false" onAction="#DoneJobsMarkersAction" prefHeight="25.0" prefWidth="88.0" style="-fx-background-color: #e4ebfb;" text="Done Jobs" textFill="#37518a">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="UsersMarkers" layoutX="596.0" layoutY="54.0" mnemonicParsing="false" onAction="#UsersMarkersAction" prefHeight="25.0" prefWidth="69.0" style="-fx-background-color: #e4ebfb;" text="Users" textFill="#37518a">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font>
+                  </Button>
+               </items>
+            </SplitPane>
+            <Label layoutX="427.0" layoutY="-1.0" text="Locations :" textFill="#2a5a8a">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>

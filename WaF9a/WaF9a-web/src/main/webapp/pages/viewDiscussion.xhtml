@@ -1,0 +1,40 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:c="http://java.sun.com/jsp/jstl/core"
+                template="/template/index.xhtml">
+                	
+			<ui:define name="content">
+				<div class="container">
+					<div class="row clearfix"> 
+						<div class="col-md-12"> 
+							<div class="headings-area"> 
+								<h3 class="animated fadeInUp visible" data-animation="fadeInUp" data-animation-delay="100"><h:outputText value="#{forumsBean.discussion.topic}" /></h3> 
+								<hr class="animated fadeInUp visible" data-animation="fadeInUp" data-animation-delay="100"/> 
+							</div>
+							
+							<c:forEach var="diss" items="#{forumsBean.msgs}">
+								<ul class="job-listings"> 
+									<li class="animated fadeInUp visible" data-animation="fadeInUp" data-animation-delay="100"> 
+										<div class="title"> 
+											<span class="prof-photo">
+											<img src="../resources/img/prof-01.jpg" alt=""/></span> 
+											<span class="designation"> 
+											<a href="single.html"><h:outputText value="#{diss.owner.firstName}" /></a>
+											</span> 
+										</div>
+										<div class="location"><h:outputText value="#{diss.text}" /></div>
+									</li>
+								</ul>
+							</c:forEach>
+							<h:form>
+								<h:commandButton styleClass="input-button" action="#{forumsBean.addMes()}"
+														value="Add Message" />
+								<h:inputTextarea value="#{forumsBean.msg.text}" styleClass="input-area" />
+							</h:form>
+						</div>
+					</div>
+				</div>	
+			</ui:define>
+</ui:composition>

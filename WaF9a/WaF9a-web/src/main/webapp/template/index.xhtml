@@ -1,0 +1,210 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+
+<head>
+<meta charset="utf-8" />
+<title>WaF9a</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="SKYPE_TOOLBAR" content="SKYPE_TOOLBAR_PARSER_COMPATIBLE" />
+<meta name="description" content="" />
+<meta name="keywords" content="" />
+<link rel="shortcut icon" type="image/x-icon"
+	href="#{request.contextPath}/resources/img/logo.png" />
+<link type="text/css" rel="stylesheet"
+	href="#{request.contextPath}/resources/css/bootstrap.css" />
+<link type="text/css" rel="stylesheet"
+	href="#{request.contextPath}/resources/font-awesome/css/font-awesome.min.css" />
+<link type="text/css" rel="stylesheet"
+	href="foundation-icons/foundation-icons.css" />
+<link type="text/css" rel="stylesheet"
+	href="#{request.contextPath}/resources/css/animate.min.css" />
+<link type="text/css" rel="stylesheet"
+	href="#{request.contextPath}/resources/css/slidebars.css" />
+<link type="text/css" rel="stylesheet"
+	href="#{request.contextPath}/resources/css/fancySelect.css" />
+<link type="text/css" rel="stylesheet"
+	href="#{request.contextPath}/resources/css/grami.css" />
+<link type="text/css" rel="stylesheet"
+	href="#{request.contextPath}/resources/css/style.css" />
+<link type="text/css" rel="stylesheet"
+	href="#{request.contextPath}/resources/css/facebox.css" />
+<link type="text/css" rel="stylesheet"
+	href="#{request.contextPath}/resources/css/switcher.css" />
+<link type="text/css" rel="stylesheet"
+	href="#{request.contextPath}/resources/css/gray.css" title="gray" />
+<link type="text/css" rel="stylesheet"
+	href="#{request.contextPath}/resources/css/blue.css" title="blue" />
+<link type="text/css" rel="stylesheet"
+	href="#{request.contextPath}/resources/css/orange.css" title="orange" />
+<link type="text/css" rel="stylesheet"
+	href="#{request.contextPath}/resources/css/pink.css" title="pink" />
+<link type="text/css" rel="stylesheet"
+	href="#{request.contextPath}/resources/css/green.css" title="green" />
+<link type="text/css" rel="stylesheet"
+	href="#{request.contextPath}/resources/css/dark-gray.css"
+	title="dark-gray" />
+<link
+	href='http://fonts.googleapis.com/css?family=Droid+Serif:400,400italic,700,700italic'
+	rel='stylesheet' type='text/css' />
+<link
+	href='http://fonts.googleapis.com/css?family=Ubuntu:700italic,700,500italic,500,400italic,400,300italic,300'
+	rel='stylesheet' type='text/css' />
+<script type="text/javascript"
+	src="#{request.contextPath}/resources/js/jquery.js"></script>
+<script type="text/javascript"
+	src="#{request.contextPath}/resources/js/bootstrap.js"></script>
+<script type="text/javascript"
+	src="#{request.contextPath}/resources/js/slidebars.js"></script>
+<script type="text/javascript"
+	src="#{request.contextPath}/resources/js/fancySelect.js"></script>
+<script type="text/javascript"
+	src="#{request.contextPath}/resources/js/jquery.appear.js"></script>
+<script type="text/javascript"
+	src="#{request.contextPath}/resources/js/settings.js"></script>
+<script type="text/javascript"
+	src="#{request.contextPath}/resources/js/facebox.js"></script>
+<script type="text/javascript">jQuery(document).ready(function($){$('a[data-popup*=facebox]').facebox({opacity : 0.9,loadingImage : '#{request.contextPath}/resources/img/loading.gif',closeImage : '#{request.contextPath}/resources/img/closelabel.png'})}) </script>
+<script type="text/javascript"
+	src="#{request.contextPath}/resources/js/jquery.flexslider.js"></script>
+<script type="text/javascript">$('.banner-slider').flexslider({animation: "fade",start: function(slider){$('body').removeClass('loading');}}); </script>
+<script type="text/javascript"
+	src="#{request.contextPath}/resources/js/styleswitcher.js"></script>
+</head>
+<body>
+	<h:link onclick="#{autentificationBean.refresh()}"
+		rendered="#{autentificationBean.logged}" />
+
+	<div class="colors-switcher" style="left: -46px;">
+		<a id="show-panel" class="hide-panel"><i class="fa fa-cog"></i></a>
+		<p>Skins:</p>
+		<ul class="colors-list">
+			<li><a title="gray" class="gray"
+				onClick="setActiveStyleSheet('gray'); return false;"></a></li>
+			<li><a title="blue" class="blue"
+				onClick="setActiveStyleSheet('blue'); return false;"></a></li>
+			<li><a title="orange" class="orange"
+				onClick="setActiveStyleSheet('orange'); return false;"></a></li>
+			<li><a title="pink" class="pink"
+				onClick="setActiveStyleSheet('pink'); return false;"></a></li>
+			<li><a title="green" class="green"
+				onClick="setActiveStyleSheet('green'); return false;"></a></li>
+			<li><a title="dark-gray" class="dark-gray"
+				onClick="setActiveStyleSheet('dark-gray'); return false;"></a></li>
+		</ul>
+	</div>
+
+	<header class="sb-slidebar sb-left">
+		<nav class="main-menu">
+			<h:form>
+				<ul>
+					<li><a href="welcome.jsf" class="active">HOME</a></li>
+					<li><a href="#">Search</a>
+						<ul class="sub-menu">
+							<li><h:commandLink
+									action="#{redirectionsBean.gotoSeachOfeers()}"
+									value="Job Offers" /></li>
+							<li><h:commandLink
+									action="#{redirectionsBean.gotoSeatchUsers()}"
+									value="Employees" /></li>
+
+						</ul></li>
+						<li><h:commandLink action="#{redirectionsBean.gotoAddOffer()}"
+							value="Post A Job" /></li>
+					<li><a href="#">Jobs</a>
+						<ul class="sub-menu">
+							<li><h:commandLink
+									action="#{redirectionsBean.gotoMyOffers()}"
+									value="Offers" /></li>
+							<li><h:commandLink
+									action="#{redirectionsBean.gotoMyDoneJobs()}"
+									value="Done Jobs" /></li>
+						</ul></li>
+					<li><h:commandLink action="#{redirectionsBean.gotoForums()}"
+							value="Forums" /></li>
+					<li><a href="pages/contact.jsf">Claims</a></li>
+					<li><a href="pages/contact.jsf">Contact</a></li>
+				</ul>
+			</h:form>
+		</nav>
+	</header>
+
+	<div class="wrapper" id="sb-site">
+		<section class="header-area-inner">
+			<div class="container">
+				<div class="navigation-area clearfix">
+					<a class="sb-toggle-left inner-page"> <span></span> <span></span>
+						<span></span>
+					</a>
+					<div class="inner-logo-area">
+
+						<a href="../welcome.jsf"><img
+							src="#{request.contextPath}/resources/img/waf9a.jpg" alt=""
+							style="height: 63px; width: 205px;" /></a>
+					</div>
+					<div class="right-navigation-inner clearfix">
+						<ui:include src="/template/identity.xhtml" />
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<ui:insert name="content">
+
+		</ui:insert>
+
+		<footer class="footer-main">
+			<div class="container">
+				<div class="row clearfix">
+					<div class="col-md-2 social-area animated"
+						data-animation="fadeInUp" data-animation-delay="100">
+						<ul class="social-main">
+							<li><a href="#"><i class="fi-social-facebook"></i></a></li>
+							<li><a href="#"><i class="fi-social-linkedin"></i></a></li>
+							<li><a href="#"><i class="fi-social-pinterest"></i></a></li>
+						</ul>
+					</div>
+					<div class="col-md-10 footer-conts">
+						<h3 class="animated" data-animation="fadeInUp"
+							data-animation-delay="100">WaF9a is currently free!</h3>
+						<h5 class="uppercase animated" data-animation="fadeInUp"
+							data-animation-delay="200">All job listings will be free of
+							charge until further notice.</h5>
+						<hr class="animated" data-animation="fadeInUp"
+							data-animation-delay="300" />
+						<br />
+						<div class="subscribe-form clearfix animated"
+							data-animation="fadeInUp" data-animation-delay="200">
+							<form>
+								<input type="text" class="subscribe-input"
+									placeholder="Subscribe to get lastest news.." />
+								<button type="button" class="subscribe-btn">
+									<i class="fi-arrow-right"></i>
+								</button>
+							</form>
+						</div>
+						<ul class="footer-menu animated" data-animation="fadeInUp"
+							data-animation-delay="200">
+							<li><a href="#">FIND A JOB</a></li>
+							<li><a href="#">POST A JOB</a></li>
+							<li><a href="#">Forums</a></li>
+						</ul>
+						<p class="animated" data-animation="fadeInUp"
+							data-animation-delay="200"></p>
+					</div>
+				</div>
+			</div>
+		</footer>
+
+		<ui:include src="/template/notifications.xhtml" />
+	</div>
+
+
+
+	<!-- 	<script>(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o), m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)})(window,document,'script','../../../www.google-analytics.com/analytics.js','ga'); ga('create', 'UA-56478654-1', 'auto'); ga('send', 'pageview'); </script> -->
+</body>
+
+</html>

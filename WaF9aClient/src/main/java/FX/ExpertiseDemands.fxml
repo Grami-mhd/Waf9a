@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="178.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="FX.ExpertiseDemandeController">
+	<children>
+		<HBox alignment="CENTER_LEFT" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+			<children>
+				<TitledPane fx:id="titel" prefHeight="182.0" prefWidth="602.0">
+					<content>
+						<ScrollPane prefHeight="100.0" prefWidth="600.0">
+							<content>
+								<VBox fx:id="demends" />
+							</content>
+						</ScrollPane>
+					</content>
+               <HBox.margin>
+                  <Insets left="10.0" top="10.0" />
+               </HBox.margin>
+				</TitledPane>
+				<VBox alignment="CENTER">
+					<children>
+						<HBox alignment="CENTER">
+							<children>
+								<Button mnemonicParsing="false" onAction="#accept" prefHeight="25.0" prefWidth="81.0" style="-fx-background-color: green;" text="Accept">
+									<HBox.margin>
+										<Insets left="20.0" />
+									</HBox.margin>
+								</Button>
+								<Button layoutX="49.0" layoutY="63.0" mnemonicParsing="false" onAction="#decline" prefHeight="25.0" prefWidth="80.0" style="-fx-background-color: red;" text="Decline">
+									<HBox.margin>
+										<Insets left="20.0" right="20.0" />
+									</HBox.margin>
+								</Button>
+							</children>
+						</HBox>
+						<Label fx:id="number" prefHeight="32.0" prefWidth="154.0" text="Label" wrapText="true" />
+                  <Label prefHeight="17.0" prefWidth="154.0" text="for this expertise" />
+					</children>
+				</VBox>
+			</children>
+		</HBox>
+	</children>
+</AnchorPane>

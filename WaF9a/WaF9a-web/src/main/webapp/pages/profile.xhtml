@@ -1,0 +1,327 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	template="/template/index.xhtml" xmlns:p="http://java.sun.com/jsf/html">
+
+	<ui:define name="content">
+
+
+
+		<section class="inner-headings">
+			<div class="container text-left">
+				<div class="row clearfix">
+					<div class="profile-head-area clearfix">
+						<div class="profile-photo">
+							<img src="#{request.contextPath}/resources/img/profile-photo.jpg"
+								alt="" />
+						</div>
+						<div class="prof-headings">
+							<h3 class="animated" data-animation="fadeInUp"
+								data-animation-delay="100">#{autentificationBean.user.userName}</h3>
+							<h5 class="uppercase animated" data-animation="fadeInUp"
+								data-animation-delay="200">
+								<i class="fi-mountains"></i> #{autentificationBean.user.email}
+							</h5>
+							<hr class="animated" data-animation="fadeInUp"
+								data-animation-delay="300"></hr>
+						</div>
+					</div>
+					<div class="profile-btns-main">
+						<a href="#" class="apply-btn">Apply</a> <a href="#"
+							class="bookmark-btn"><i class="fi-bookmark"></i><sup><i
+								class="fi-plus"></i></sup></a>
+					</div>
+
+				</div>
+			</div>
+		</section>
+		<section class="inner-full-cont">
+			<div class="container">
+				<div class="row clearfix">
+					<div class="col-md-12 full-width-area">
+						<div id="tab-container" class="tab-container animated"
+							data-animation="fadeInUp" data-animation-delay="100">
+							<ul class="etabs">
+								<li class="tab"><a href="#tab-01">MY INFORMATIONS</a></li>
+								<li class="tab"><a href="#tab-02">COMPANY INFORMATIONS</a></li>
+							</ul>
+							<div class="panel-container">
+								<div class="tab-cont" id="tab-01">
+									<ul class="info-list clearfix">
+										<li><label><i class="fi-calendar"></i> first name</label>
+											<span>#{autentificationBean.user.firstName}</span></li>
+										<li><label><i class="fi-calendar"></i> last name</label>
+											<span>#{autentificationBean.user.lastName}</span></li>
+
+									</ul>
+								</div>
+								<div class="tab-cont" id="tab-02">
+									<ul class="info-list clearfix">
+										<li><label><i class="fi-calendar"></i> phone</label> <span>#{autentificationBean.user.phone}</span></li>
+										<li><label><i class="fi-calendar"></i> adress</label> <span>#{autentificationBean.user.adress}</span></li>
+									</ul>
+								</div>
+								<div>
+							 <h:form>
+								<h:commandButton action="#{profileBean.diplayFormButton()}" value="Update User" />
+								</h:form>
+									<h:form rendered="#{profileBean.displayForm}">
+										<div class="tab-cont" id="tab-01">
+											<ul class="info-list clearfix">
+												<li><label><i class="fi-calendar"></i> first
+														name</label> <span><h:inputText class="bookmark-btn"
+															value="#{autentificationBean.user.firstName}" /></span></li>
+												<li><label><i class="fi-calendar"></i> last
+														name</label> <span><h:inputText class="bookmark-btn"
+															value="#{autentificationBean.user.lastName}" /></span></li>
+											</ul>
+										</div>
+										<div class="tab-cont" id="tab-02">
+											<ul class="info-list clearfix">
+												<li><label><i class="fi-calendar"></i> phone</label> <span><h:inputText
+															class="bookmark-btn"
+															value="#{autentificationBean.user.phone}" /></span></li>
+												<li><label><i class="fi-calendar"></i> address</label> <span><h:inputText
+															class="bookmark-btn"
+															value="tunis"/></span></li>
+											</ul>
+										
+										<h:commandButton action="#{profileBean.up()}" value="update profile" />
+									</div>
+									</h:form>
+								</div>
+							</div>
+						</div>
+						<p>
+							<a class="lined-tab overview-btn animated"
+								data-animation="fadeInUp" data-animation-delay="100">Overview</a>
+						</p>
+						<div class="overview-detail animated" data-animation="fadeInUp"
+							data-animation-delay="200">
+							<p>waf9a isthebest way to find a suitablejob :)</p>
+							<div class="details-lists">
+								<h6>EXPERTISES Demands</h6>
+								<div>
+									<ul class="time-iconed">
+										<c:forEach var="exp"
+											items="#{autentificationBean.user.expertises}">
+											<li><h:outputText value="#{exp.name}" /></li>
+										</c:forEach>
+									</ul>
+									<br />
+
+								</div>
+								<h6>EXPERTISES</h6>
+								<div>
+									<ul class="time-iconed">
+										<c:forEach var="exp"
+											items="#{autentificationBean.user.expertises}">
+											<li><h:outputText value="#{exp.name}" /></li>
+										</c:forEach>
+
+
+										<div class="profile-btns-main">
+
+											<h:form>
+
+												<table>
+													<tr>
+														<td><h:outputText class="fi-calendar" value="Domain " /></td>
+														<td><p:inputText class="bookmark-btn"
+																value="#{profileBean.expD.domain}" /></td>
+													</tr>
+													<tr>
+														<td><h:outputText class="fi-calendar"
+																value="Expertise" /></td>
+														<td><p:inputText class="bookmark-btn"
+																value="#{profileBean.expD.expertiseDemandeId.name}" /></td>
+													</tr>
+													<tr>
+														<td></td>
+														<td><p:commandButton class="apply-btn"
+																value="Add Expertise"
+																actionListener="#{profileBean.doAddExp()}" /></td>
+													</tr>
+												</table>
+
+											</h:form>
+										</div>
+
+									</ul>
+									<br />
+
+								</div>
+
+
+								<h6>Done Jobs</h6>
+								<ul class="time-iconed">
+									<c:forEach var="don"
+										items="#{autentificationBean.user.doneJobs}">
+										<li><h:outputText value="#{don.text}" /></li>
+									</c:forEach>
+
+								</ul>
+							</div>
+						</div>
+					</div>
+					<div class="col-md-12 job-listing-full">
+						<div class="job-list-head clearfix animated"
+							data-animation="fadeInUp" data-animation-delay="100">
+							<div class="title-big">Friends</div>
+
+							<div class="jobs-search-area clearfix animated fadeInUp visible"
+								data-animation="fadeInUp" data-animation-delay="100">
+								<div class="search-bx">
+									<h:form>
+										<h:inputText value="#{profileBean.key}"
+											styleClass="search-job-field" />
+										<h:commandButton styleClass="input-button"
+											action="#{profileBean.searchFriends()}" style="display:none;"
+											value="submit" />
+									</h:form>
+								</div>
+								<div class="location-picker">
+									<a href="#" class="picker">Pick a Location</a>
+								</div>
+								<div class="job-selecter">
+									<div class="fancy-select">
+										<select id="basic-selecter" class="fancified"
+											style="width: 1px; height: 1px; display: block; position: absolute; top: 0px; left: 0px; opacity: 0;">
+											<option value="">Select job type</option>
+											<option>Full Time</option>
+											<option>Freelancer</option>
+											<option>Temporary</option>
+											<option>Intership</option>
+										</select>
+										<div class="trigger">Select job type</div>
+										<ul class="options">
+											<li data-raw-value="Full Time">Full Time</li>
+											<li data-raw-value="Freelancer">Freelancer</li>
+											<li data-raw-value="Temporary">Temporary</li>
+											<li data-raw-value="Intership">Intership</li>
+										</ul>
+									</div>
+								</div>
+							</div>
+						</div>
+
+						<ul class="job-listings">
+							<c:forEach var="friend" items="#{profileBean.friends}">
+
+								<li class="animated" data-animation="fadeInUp"
+									data-animation-delay="100">
+									<div class="title">
+										<span class="prof-photo"><a href="#"><img
+												src="#{request.contextPath}/resources/img/prof-01.jpg"
+												alt="" /></a></span> <span class="designation"> <h:outputText
+												value="#{friend.firstName} #{friend.lastName} " /><br>5GoatCorporation
+										</br>
+										</span>
+									</div>
+									<div class="location">
+										Delete Contact :
+										<h:form>
+											<p:commandButton immediate="true" value="Delete"
+												action="#{profileBean.doDeleteFriend(friend)}" />
+										</h:form>
+									</div>
+									<div class="create">10 mins ago</div>
+								</li>
+							</c:forEach>
+						</ul>
+
+					</div>
+				</div>
+			</div>
+		</section>
+		<section class="got-a-question">
+			<div class="container">
+				<div class="row clearfix">
+					<div class="col-md-3 call-us-head animated"
+						data-animation="fadeInLeft" data-animation-delay="200">
+						<h3>Got a Question?</h3>
+					</div>
+					<div class="col-md-6 call-us-txt animated"
+						data-animation="fadeInUp" data-animation-delay="300">
+						<p>Send us an email or call us at 1 800 555 5555</p>
+					</div>
+					<div class="col-md-3 call-us-link animated"
+						data-animation="fadeInRight" data-animation-delay="200">
+						<a href="contact.html" class="call-us-btn">CONTACT NOW</a>
+					</div>
+				</div>
+			</div>
+		</section>
+		<section class="app-download-main">
+			<div class="container">
+				<div class="row clearfix">
+					<div class="col-md-8 down-txt-cont animated"
+						data-animation="fadeInLeft" data-animation-delay="200">
+						<h3>Get JobHunt Applications</h3>
+						<h5 class="uppercase">Available on everything you use every
+							day.</h5>
+						<hr></hr>
+						<div class="download-txt">
+							<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit,
+								sed do eiusmod tempor incididunt ut labore et dolore magna
+								aliqua. Ut enim ad minim veniam, quis nostrud exercitation
+								ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis
+								aute irure dolor in</p>
+							<a href="#" class="lined-btns"><i class="fi-social-apple"></i>IOS
+								APP</a> <a href="#" class="lined-btns"><i
+								class="fi-social-android"></i>ANDROID</a>
+						</div>
+					</div>
+					<div class="col-md-4 down-img-cont animated"
+						data-animation="fadeInRight" data-animation-delay="200">
+						<div class="image-outer">
+							<img src="#{request.contextPath}/resources/img/iphone.png" alt="" />
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+
+
+		<script type="text/javascript" src="js/jquery.js"></script>
+		<script type="text/javascript" src="js/bootstrap.js"></script>
+		<script type="text/javascript" src="js/slidebars.js"></script>
+		<script type="text/javascript" src="js/fancySelect.js"></script>
+		<script type="text/javascript" src="js/jquery.appear.js"></script>
+		<script type="text/javascript" src="js/settings.js"></script>
+		<script type="text/javascript" src="js/jquery.easytabs.min.js"></script>
+		<script type="text/javascript">$(document).ready( function(){$('#tab-container').easytabs({updateHash: false});}); </script>
+		<script type="text/javascript" src="js/styleswitcher.js"></script>
+		<script>(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o), m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)})(window,document,'script','../../../www.google-analytics.com/analytics.js','ga'); ga('create', 'UA-56478654-1', 'auto'); ga('send', 'pageview'); </script>
+
+		<!-- Mirrored from responsiveexpert.com/themes/jobhunt/single.html by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 23 Apr 2017 23:33:23 GMT -->
+
+
+	</ui:define>
+	<ui:define name=""></ui:define>
+</ui:composition>
+
+
+
+<!-- 						<c:forEach var="off" items="#{offersReseachBean.offers}">
+
+								<li class="animated" data-animation="fadeInUp"
+									data-animation-delay="100">
+									<div class="title">
+										<span class="prof-photo"><a href="single.html"><img
+												src="img/prof-01.jpg" alt="" /></a></span> <span class="designation">
+
+											<h:outputText value="#{off.text}" /><br />5Goat Corporation
+										</span>
+									</div>
+									<div class="location">
+										<h:outputText
+											value="#{off.owner.firstName} #{off.owner.lastName} " />
+									</div>
+									<div class="create">
+										<h:outputText value="#{off.date}" />
+									</div>
+								</li>
+							</c:forEach> -->

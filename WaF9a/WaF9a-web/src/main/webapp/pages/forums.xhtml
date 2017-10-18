@@ -1,0 +1,93 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+ 				xmlns:c="http://java.sun.com/jsp/jstl/core"
+                template="/template/index.xhtml">
+                	
+			<ui:define name="content">
+			
+				<div class="container">
+				<hr class="animated fadeInUp visible" data-animation="fadeInUp" data-animation-delay="100"/>
+				<div class="jobs-search-area clearfix animated fadeInUp visible" data-animation="fadeInUp" data-animation-delay="100"> 
+					<div class="search-bx">
+<!-- 						<input type="text" class="search-job-field" placeholder="Search discussion.."/> -->
+								<h:form>
+									<center><table>
+										<tr>
+											<td><h:inputText value="#{forumsBean.topic}"
+													styleClass="search-job-field" />
+											</td>
+												
+											<td><h:commandButton styleClass="input-button"
+													action="#{forumsBean.searchDis()}"
+													value="Search" /></td>
+										</tr>
+									</table></center>
+								</h:form>			
+					</div>
+
+					<c:forEach var="dis" items="#{forumsBean.discussions}">				
+						<ul class="job-listings"> 
+							<li class="animated fadeInUp visible" data-animation="fadeInUp" data-animation-delay="100"> 
+								<div class="title"> 
+									<span class="prof-photo">
+									<a href="single.html">
+									<img src="img/prof-01.jpg" alt=""/></a></span> 
+									<span class="designation"> 
+									<a href="single.html"><h:outputText value="#{dis.topic}" /></a>
+									</span> 
+								</div>
+						<div class="location"><h:outputText value="#{dis.date}" /></div>
+						<div class="create"><h:outputText value="#{dis.owner.firstName} #{dis.owner.lastName}" /></div></li>						
+						</ul>
+					</c:forEach>
+				
+				</div>
+				
+				<c:forEach var="dis" items="#{forumsBean.listdiscussion}">
+				<div class="headings-area"> 
+				<h3 class="animated fadeInUp visible" data-animation="fadeInUp" data-animation-delay="100"><h:outputText value="#{dis.key}" /></h3> 
+				<hr class="animated fadeInUp visible" data-animation="fadeInUp" data-animation-delay="100"/> </div>
+				
+				
+				<div class="job-list-head clearfix animated fadeInUp visible" data-animation="fadeInUp" data-animation-delay="100"> 
+					<div class="title">Owner</div>
+					<div class="location">Topic</div>
+					<div class="create">Date creation</div>
+				</div>
+				
+				<c:forEach var="d" items="#{dis.value}">
+					<h:form>
+						<h:commandLink action="#{forumsBean.viewDiscussion(d)}" >											
+							<ul class="job-listings"> 
+								
+								<li class="animated fadeInUp visible" data-animation="fadeInUp" data-animation-delay="100"> 
+									<div class="title"> 
+										<span class="prof-photo">
+										<img src="../resources/img/prof-01.jpg" alt=""/></span> 
+										<span class="designation"> 
+										<a href="single.html"><h:outputText value="#{d.owner.firstName} #{d.owner.lastName}" /></a>
+										</span> 
+									</div>
+									<div class="location"><h:outputText value="#{d.topic}"/></div>
+									<div class="create"><h:outputText value="#{d.date}"  />
+										<h:commandButton action="#{forumsBean.doNew(d)}" styleClass="input-button" value="Rep"/>
+											
+									</div>
+								</li>
+							</ul>
+						</h:commandLink>
+					</h:form>
+					<h:form rendered="#{forumsBean.formDisplay}">
+							<h5 class="uppercase animated fadeInUp visible" data-animation="fadeInUp" data-animation-delay="100">Reason</h5> 
+							<h:inputText class="input-area" value="#{forumsBean.disR.reason}"/>
+							<h:commandButton action="#{forumsBean.doSave()}" styleClass="input-button" value="save"/>
+					</h:form>
+				</c:forEach>
+			</c:forEach>
+				
+		</div>
+
+	</ui:define>
+</ui:composition>

@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="617.0" prefWidth="1106.0" style="-fx-background-color: #e5eff1;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="FX.ReportMRController">
+   <children>
+      <VBox fx:id="Disscu" layoutY="42.0" prefHeight="599.0" prefWidth="1106.0">
+         <children>
+            <HBox prefHeight="73.0" prefWidth="1106.0">
+               <children>
+                  <Label text="Subject " textFill="#2598a8">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font>
+                     <padding>
+                        <Insets left="40.0" />
+                     </padding></Label>
+                  <TextArea fx:id="subject" prefHeight="66.0" prefWidth="803.0">
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets></TextArea>
+               </children>
+               <opaqueInsets>
+                  <Insets bottom="20.0" />
+               </opaqueInsets>
+               <padding>
+                  <Insets top="10.0" />
+               </padding>
+            </HBox>
+            <TitledPane fx:id="Message" prefHeight="472.0" prefWidth="1106.0" style="-fx-background-color: #e5eff1;" HBox.hgrow="ALWAYS">
+               <content>
+                  <ScrollPane prefHeight="403.0" prefWidth="1104.0">
+                     <content>
+                        <VBox fx:id="messages">
+                           <padding>
+                              <Insets top="20.0" />
+                           </padding></VBox>
+                     </content>
+                     <padding>
+                        <Insets top="20.0" />
+                     </padding>
+                  </ScrollPane>
+               </content>
+               <opaqueInsets>
+                  <Insets top="40.0" />
+               </opaqueInsets>
+               <padding>
+                  <Insets top="20.0" />
+               </padding></TitledPane>
+            <AnchorPane prefHeight="30.0" prefWidth="810.0">
+               <children>
+                  <ToolBar prefHeight="35.0" prefWidth="1106.0">
+                    <items>
+                      <Button fx:id="previous" mnemonicParsing="false" onAction="#pervious" text="Previous" />
+                        <Label fx:id="numpage" prefHeight="28.0" prefWidth="956.0" text="                                                                                                                                            Label">
+                           <padding>
+                              <Insets left="330.0" right="330.0" />
+                           </padding>
+                        </Label>
+                        <Button fx:id="next" mnemonicParsing="false" onAction="#next" text="Next" />
+                    </items>
+                  </ToolBar>
+               </children>
+            </AnchorPane>
+         </children>
+         <opaqueInsets>
+            <Insets bottom="10.0" />
+         </opaqueInsets>
+      </VBox>
+      <Label layoutX="31.0" layoutY="22.0" prefHeight="17.0" prefWidth="330.0" text="Messages and Replys Reports" textFill="#497e8d">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </Label>
+   </children>
+   <padding>
+      <Insets left="20.0" top="20.0" />
+   </padding>
+</AnchorPane>

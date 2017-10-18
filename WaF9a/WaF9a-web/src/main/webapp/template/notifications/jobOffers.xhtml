@@ -1,0 +1,49 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:ui="http://java.sun.com/jsf/facelets">
+                	
+	<div id="jobOffers" style="display: none">
+		<h3>Job Offers</h3>
+		<hr />
+		<div>
+			<ui:repeat var="off"
+				value="#{autentificationBean.user.jobOffers}">
+				<h:form>
+					<table>
+						<tr>
+							<td><h:commandLink
+									action="#{notificationsBean.sendToProfile(off.sender)}">
+									<blockquote>
+										<p>
+											<h:outputText
+												value="#{off.sender.firstName} #{off.sender.lastName}" />
+										</p>
+										<small>Propose Price =<h:outputText value="#{off.price}" />DT, <br/>
+										Demanded delay <h:outputText value="#{off.duration}" /> days.
+										<br />
+										<h:outputText value="#{off.date.toLocaleString()}" />
+										</small>
+									</blockquote>
+									<h:outputLabel  value="#{off.text}" />
+								</h:commandLink></td>
+							<td><h:panelGrid columns="1">
+									<h:commandButton style="background-color: #9999ff ;height: 40px; width: 120px;"
+										action="#{notificationsBean.acceptJobOffer(off)}"
+										value="Accept" />
+									<h:commandButton style="background-color: red ;height: 40px; width: 120px;"
+										action="#{notificationsBean.DeclineJobOffer(off)}"
+										value="Decline" />
+								</h:panelGrid></td>
+						</tr>
+
+					</table>
+
+				</h:form>
+
+				<hr />
+			</ui:repeat>
+		</div>
+	</div>
+
+</ui:composition>

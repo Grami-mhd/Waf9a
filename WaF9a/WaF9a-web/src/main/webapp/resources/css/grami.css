@@ -1,0 +1,11 @@
+
+.notificationsHolder {
+    position: relative;
+}
+.notificationsHolder label {
+    position: absolute;
+    right: 2px;
+    top: 2px;
+    color :red;
+    font-weight: bold;
+}

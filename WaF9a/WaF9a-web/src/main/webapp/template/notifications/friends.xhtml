@@ -1,0 +1,47 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+
+	<div id="friends" style="display: none">
+		<h3>Contacting Requestsss</h3>
+		<hr />
+		<div>
+			<ui:repeat var="req"
+				value="#{autentificationBean.user.friendsRequests}">
+				<h:form>
+					<table>
+						<tr>
+							<td><h:commandLink
+									action="#{notificationsBean.sendToProfile(req.sender)}">
+									<blockquote>
+										<p>
+											<h:outputText
+												value="#{req.sender.firstName} #{req.sender.lastName}" />
+										</p>
+										<small> <h:outputText value="#{req.text}" />
+										</small>
+									</blockquote>
+								</h:commandLink></td>
+							<td><h:panelGrid columns="1">
+									<h:commandButton styleClass="input-button"
+										action="#{notificationsBean.acceptDemande(req)}"
+										value="Accept" />
+									<h:commandButton styleClass="input-button"
+										style="background-color: red;"
+										action="#{notificationsBean.DeclineDemande(req)}"
+										value="Decline" />
+								</h:panelGrid></td>
+						</tr>
+
+					</table>
+
+				</h:form>
+
+				<hr />
+			</ui:repeat>
+		</div>
+	</div>
+
+
+</ui:composition>

@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.paint.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="FX.ReportedDiscussionController">
+   <children>
+      <TitledPane fx:id="reportNumber">
+         <content>
+            <VBox alignment="TOP_CENTER">
+               <children>
+                  <Label text="This Discussion has been reported : " textAlignment="CENTER">
+                     <font>
+                        <Font name="System Bold" size="14.0" />
+                     </font>
+                  </Label>
+                  <BorderPane>
+                     <bottom>
+                        <TitledPane animated="false" expanded="false" text="Reporters" BorderPane.alignment="CENTER">
+                           <content>
+                              <ScrollPane prefViewportHeight="162.0" prefViewportWidth="812.0">
+                                 <content>
+                                    <VBox fx:id="reporters" alignment="TOP_CENTER" />
+                                 </content>
+                              </ScrollPane>
+                           </content>
+                        </TitledPane>
+                     </bottom>
+                     <center>
+                        <TextArea fx:id="subject" editable="false" prefHeight="25.0" BorderPane.alignment="CENTER" />
+                     </center>
+                     <right>
+                        <VBox BorderPane.alignment="CENTER">
+                           <children>
+                              <Button mnemonicParsing="false" onAction="#declinereport" prefHeight="25.0" prefWidth="155.0" text="Decline" textOverrun="CLIP" wrapText="true" />
+                              <Button layoutY="54.0" mnemonicParsing="false" onAction="#deleteDiscussion" prefHeight="25.0" prefWidth="155.0" text="Delete Discussion">
+                                 <VBox.margin>
+                                    <Insets top="20.0" />
+                                 </VBox.margin>
+                              </Button>
+                           </children>
+                        </VBox>
+                     </right>
+                     <left>
+                        <VBox BorderPane.alignment="CENTER">
+                           <children>
+                              <Button mnemonicParsing="false" onAction="#viewDiscussion" prefHeight="25.0" prefWidth="155.0" text="View Discussion" />
+                              <Button layoutY="54.0" mnemonicParsing="false" onAction="#viewOwner" prefHeight="25.0" prefWidth="155.0" text="View Owner">
+                                 <VBox.margin>
+                                    <Insets top="20.0" />
+                                 </VBox.margin>
+                              </Button>
+                           </children>
+                        </VBox>
+                     </left>
+                  </BorderPane>
+               </children>
+            </VBox>
+         </content>
+      </TitledPane>
+   </children>
+</AnchorPane>

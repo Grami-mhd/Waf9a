@@ -1,0 +1,133 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	template="/template/index.xhtml">
+
+	<ui:define name="content">
+		<section class="inner-headings">
+			<div class="container text-center">
+				<h3 class="animated" data-animation="fadeInUp"
+					data-animation-delay="100">Register Now</h3>
+				<h5 class="uppercase animated" data-animation="fadeInUp"
+					data-animation-delay="200">You can register here for jobs</h5>
+				<hr class="animated" data-animation="fadeInUp"
+					data-animation-delay="300" />
+			</div>
+		</section>
+		<hr />
+		<section class="inner-full-cont">
+			<div class="container">
+				<div class="row clearfix">
+					<div class="col-md-12 full-width-area">
+						<div class="job-submission-form">
+
+							<h:form id="register">
+								<p>
+									<label>Your Name </label>
+									<h:inputText value="#{registreBean.user.userName}"
+										required="true" requiredMessage="login is required"
+										type="text" class="input-area">
+
+										<f:ajax event="blur" execute="@this" render="msg_login" />
+									</h:inputText>
+									<h:message id="msg_login" for="login" styleClass="error" />
+								</p>
+								<p>
+									<label>Your Password </label>
+
+									<h:inputSecret id="password"
+										value="#{registreBean.user.password}" type="password"
+										class="input-area" validatorMessage="between 6 and 12"
+										required="true" requiredMessage="password is required">
+										<f:validateLength minimum="6" maximum="12" />
+										<f:ajax event="blur" execute="@this" render="msg_password" />
+									</h:inputSecret>
+									<h:message id="msg_password" for="password" styleClass="error" />
+								</p>
+								<p>
+									<label>Your email</label>
+									<h:inputText id="email" type="text" class="input-area"
+										value="#{registreBean.user.email}"
+										validatorMessage="invalid email!">
+										<f:ajax event="blur" execute="@this" render="msg_email" />
+										<f:validateRegex
+											pattern="^[A-Za-z0-9._%-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,4}$" />
+									</h:inputText>
+									<h:message id="msg_email" for="email" styleClass="error" />
+								</p>
+								<p>
+									<label>Your Phone</label>
+									<h:inputText value="#{registreBean.user.phone}"
+										validatorMessage="between 6 and 12" type="text"
+										class="input-area" />
+								</p>
+								<p>
+									<label>Your Adress</label>
+									<h:inputText value="#{registreBean.user.adress.address}"
+										type="text" class="input-area" />
+								</p>
+								<p>
+									<h:commandButton immediate="true"
+										action="/welcome?faces-redirect=true" value="cancel"
+										class="input-button" />
+									<h:commandButton action="#{registreBean.doSignUp}"
+										value="sign up" class="input-button" />
+
+								</p>
+							</h:form>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+		<section class="got-a-question">
+			<div class="container">
+				<div class="row clearfix">
+					<div class="col-md-3 call-us-head animated"
+						data-animation="fadeInLeft" data-animation-delay="200">
+						<h3>Got a Question?</h3>
+					</div>
+					<div class="col-md-6 call-us-txt animated"
+						data-animation="fadeInUp" data-animation-delay="300">
+						<p>Send us an email or call us at 1 800 555 5555</p>
+					</div>
+					<div class="col-md-3 call-us-link animated"
+						data-animation="fadeInRight" data-animation-delay="200">
+						<a href="contact.html" class="call-us-btn">CONTACT NOW</a>
+					</div>
+				</div>
+			</div>
+		</section>
+		<section class="app-download-main">
+			<div class="container">
+				<div class="row clearfix">
+					<div class="col-md-8 down-txt-cont animated"
+						data-animation="fadeInLeft" data-animation-delay="200">
+						<h3>Get JobHunt Applications</h3>
+						<h5 class="uppercase">Available on everything you use every
+							day.</h5>
+						<hr />
+						<div class="download-txt">
+							<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit,
+								sed do eiusmod tempor incididunt ut labore et dolore magna
+								aliqua. Ut enim ad minim veniam, quis nostrud exercitation
+								ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis
+								aute irure dolor in</p>
+							<a href="#" class="lined-btns"><i class="fi-social-apple"></i>IOS
+								APP</a> <a href="#" class="lined-btns"><i
+								class="fi-social-android"></i>ANDROID</a>
+						</div>
+					</div>
+					<div class="col-md-4 down-img-cont animated"
+						data-animation="fadeInRight" data-animation-delay="200">
+						<div class="image-outer">
+							<img src="img/iphone.png" alt="" />
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+	</ui:define>
+
+</ui:composition>

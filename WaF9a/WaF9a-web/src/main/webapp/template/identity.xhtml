@@ -1,0 +1,67 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:c="http://java.sun.com/jsp/jstl/core">
+	<c:choose>
+		<c:when test="#{autentificationBean.logged}">
+			<div class="top-inner-prof">
+			<h:form>
+				<a href="#" class="profile-link clearfix"> <span
+					class="prof-img"><img
+						src="#{request.contextPath}/resources/img/prof-01.jpg" alt="" /></span>
+					<span class="prof-name"><h:commandLink action="#{redirectionsBean.gotoProfile()}" value="#{autentificationBean.user.userName} " /> </span>
+				</a>
+				<h:commandLink action="#{autentificationBean.doLogout()}" value="logOut" />
+				</h:form>
+			</div>
+		</c:when>
+		<c:otherwise>
+			<div class="right-navigation">
+				<ul>
+					<li><a href="#login-box" data-popup="facebox">Login</a></li>
+					<li>					<h:form><h:commandLink action="#{redirectionsBean.gotoRegister()}" value="SignUn" /> </h:form>
+</li>
+					<li>
+						<div class="search-top">
+							<form>
+								<span class="search-form"> <input class="search-txt-top"
+									type="text" placeholder="Search Here..." />
+									<button type="button" class="search-btn-top"
+										onClick="parent.location='search-fixed.html'">
+										<i class="fi-magnifying-glass"></i>
+									</button>
+								</span>
+							</form>
+						</div>
+					</li>
+				</ul>
+			</div>
+			<div id="login-box">
+				<h3>Login</h3>
+				<hr />
+				<h:form>
+					<p>
+						<label>Email</label>
+						<h:inputText styleClass="input-area"
+							value="#{autentificationBean.user.userName}"></h:inputText>
+					</p>
+					<p>
+						<label>Password</label>
+						<h:inputSecret styleClass="input-area"
+							value="#{autentificationBean.user.password}"></h:inputSecret>
+					</p>
+					<p class="check-box">
+						<input id="checkbox1" type="checkbox" name="checkbox" value="" /><label
+							for="checkbox1"><span></span>Remember me</label>
+					</p>
+					<p>
+						<h:commandButton action="#{autentificationBean.login()}"
+							value="Login" styleClass="input-button" />
+						<span>Not member? </span><a href="#">Sign Up</a>
+					</p>
+				</h:form>
+			</div>
+		</c:otherwise>
+	</c:choose>
+</ui:composition>

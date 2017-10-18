@@ -1,0 +1,98 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	template="/template/index.xhtml"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:p="http://primefaces.org/ui">
+
+	<ui:define name="content">
+
+
+		<section class="jobs-area">
+			<div class="container">
+				<div class="row clearfix">
+					<div class="col-md-12">
+						<div class="headings-area">
+							<h3 class="animated fadeInUp visible" data-animation="fadeInUp"
+								data-animation-delay="100">Offers</h3>
+							<!-- 							<h5 class="uppercase animated fadeInUp visible" -->
+							<!-- 								data-animation="fadeInUp" data-animation-delay="100"> -->
+							<!-- 								Total <a href="#">151</a> jobs found -->
+							<!-- 							</h5> -->
+							<hr class="animated fadeInUp visible" data-animation="fadeInUp"
+								data-animation-delay="100" />
+						</div>
+						<div class="jobs-search-area clearfix animated fadeInUp visible"
+							data-animation="fadeInUp" data-animation-delay="100">
+							<div class="search-bx">
+
+								<h:form>
+									<table>
+										<tr>
+											<td><h:inputText value="#{offersReseachBean.key}"
+													styleClass="search-job-field" /></td>
+											<td><h:commandButton styleClass="input-button"
+													action="#{offersReseachBean.SearchOffers()}"
+													style="display: none" value="submit" /></td>
+
+
+											<td><h:commandButton styleClass="input-button"
+													action="#{offersReseachBean.SortOffers()}"
+													value="Sort Offers By Date" /></td>
+
+											<td><h:commandButton styleClass="input-button"
+													action="#{offersReseachBean.SearchOffers()}"
+													value="Search By Title" /></td>
+											<td><h:commandButton styleClass="input-button"
+													action="#{offersReseachBean.SearchOffersByOwnerName()}"
+													value="Search By Owner" /></td>
+										</tr>
+									</table>
+								</h:form>
+
+							</div>
+
+						</div>
+						<div class="job-list-head clearfix animated fadeInUp visible"
+							data-animation="fadeInUp" data-animation-delay="100">
+							<div class="title">Offer Title</div>
+							<div class="location">Owner</div>
+							<div class="create">Date Of Offer</div>
+						</div>
+						<ul class="job-listings">
+							<h:form>
+								<c:forEach var="off" items="#{offersReseachBean.offers}">
+
+									<li class="animated" data-animation="fadeInUp"
+										data-animation-delay="100">
+										<div class="title">
+											<span class="prof-photo"><a href="single.html"><img
+													src="#{request.contextPath}/resources/img/offer.png" alt="" /></a></span>
+											<span class="designation"> <h:commandLink
+													action="#{redirectionsBean.gotoOffer(off)}"
+													value="#{off.text}" /><br /> <h:outputText
+													value="#{off.adress.address}" />
+											</span>
+										</div>
+										<div class="location">
+											<h:outputText
+												value="#{off.owner.firstName} #{off.owner.lastName} " />
+										</div>
+										<div class="create">
+											<h:outputText value="#{off.date.toLocaleString()}" />
+										</div>
+									</li>
+								</c:forEach>
+							</h:form>
+
+						</ul>
+					</div>
+
+				</div>
+			</div>
+		</section>
+
+
+	</ui:define>
+</ui:composition>

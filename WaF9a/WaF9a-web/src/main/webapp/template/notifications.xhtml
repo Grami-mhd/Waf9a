@@ -1,0 +1,193 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:p="http://primefaces.org/ui">
+	<br />
+	<style>
+.icon {
+	height: 60px;
+	width: 70px;
+	position: relative;
+}
+
+.not {
+	position: absolute;
+	top: -5px;
+	right: -2px;
+	background-color: #f00;
+	width: 30px;
+	height: 30px;
+	color: #fff;
+	border-radius: 20px -moz-border-radius:20px;
+	-webkit-border-radius: 30px;
+	text-align: center;
+	border: 0px solid #fff;
+}
+</style>
+	<h:panelGroup rendered="#{autentificationBean.logged}" layout="block">
+
+		<div id="notificationsButtonContainer"
+			style="width: 100%; text-align: center; bottom: 0; position: fixed; margin: 0 auto; padding: 15px; height: 80px;">
+			<table>
+				<tr>
+					<td>
+						<div class="icon">
+							<a href="#messages" data-popup="facebox"> <img
+								src="#{request.contextPath}/resources/img/chat.png" />
+								<div class="not">
+									<h:outputText value="4"></h:outputText>
+								</div>
+
+							</a>
+						</div>
+					</td>
+					<td>
+						<div class="icon">
+
+							<a href="#notifications" data-popup="facebox"> <img
+								src="#{request.contextPath}/resources/img/bell.png" />
+								<div class="not">
+									<p id="notifs"></p>
+								</div></a>
+						</div>
+
+					</td>
+					<td>
+						<div class="icon">
+							<a href="#jobOffers" data-popup="facebox"> <img
+								src="#{request.contextPath}/resources/img/coins.png" />
+								<div class="not">
+									<p id="job"></p>
+								</div></a>
+						</div>
+					</td>
+					<td>
+						<div class="icon">
+							<a href="#friends" data-popup="facebox"> <img
+								src="#{request.contextPath}/resources/img/friendship.png" />
+								<div class="not">
+
+									<p id="friend"></p>
+								</div></a>
+						</div>
+					</td>
+				</tr>
+			</table>
+		</div>
+
+
+		<ui:include src="/template/notifications/notifications.xhtml" />
+		<ui:include src="/template/notifications/messages.xhtml" />
+		<ui:include src="/template/notifications/jobOffers.xhtml" />
+		<ui:include src="/template/notifications/friends.xhtml" />
+
+		<script type="text/javascript">
+			var socket = new WebSocket("ws://localhost:18080/WaF9a-web/userNotifications");
+			socket.onmessage = onMessage;
+			var logged=#{autentificationBean.user.userName};
+			function onMessage(event) { 
+
+				
+				if(event.data==="notif"){
+			    $("#notifs").html(#{notificationsBean.nbr});
+			    $("#job").html(#{autentificationBean.user.jobOffers.size()});
+			    $("#friend").html(#{autentificationBean.user.friendsRequests.size()});
+				}
+			    
+
+				if(event.data==="notif+"){
+					var number = parseInt($('#notifs').html());
+					number= number+1;
+					$('#notifs').html(number);
+				}else
+				if(event.data==="notif-"){
+					var number = parseInt($('#notifs').html());
+					number= number-1;
+					$('#notifs').html(number);
+				}else
+				if(event.data==="job+"){
+					var number = parseInt($('#job').html());
+					number= number+1;
+					$('#job').html(number);
+				}else
+				if(event.data==="job-"){
+					var number = parseInt($('#job').html());
+					number= number-1;
+					$('#job').html(number);
+				}else
+				if(event.data==="friend-"){
+					var number = parseInt($('#friend').html());
+					number= number-1;
+					$('#friend').html(number);
+				}else
+				if(event.data==="friend+"){
+					var number = parseInt($('#friend').html());
+					number= number+1;
+					$('#friend').html(number);
+				}else{
+						var msg =JSON.parse(event.data) ;
+						putMsg(msg);
+					}
+				
+			   
+			}
+			socket.onopen = function(){
+				var userData = {
+				        action : "user",
+				        user : "#{autentificationBean.user.userName}"
+				    };
+				socket.send(JSON.stringify(userData));
+			};
+			function getMessages(us){
+				var data={
+					action : 'disc',
+					user : 	us	
+				};
+				socket.send(JSON.stringify(data));
+				
+			}
+
+
+			function putMsg(msg){
+				var content = document.getElementById("msgs");
+				var msgDiv = document.createElement("div");
+				var hh = document.createElement("h5");
+				hh.setAttribute("class","uppercase animated fadeInUp visible");
+				hh.setAttribute("data-animation","fadeInUp");
+				hh.setAttribute("data-animation-delay","100");
+				hh.setAttribute("title",msg.date);
+				if(msg.reciever===logged.toString()){
+					hh.setAttribute("style","margin-bottom: 10;");
+				}else{
+					hh.setAttribute("style","margin-bottom: 10;text-align: right;");
+				}
+				hh.innerHTML = "<p>"+msg.text+"</p>";
+				
+				content.appendChild(hh);
+				
+				
+			}
+			
+			$("#sendmsg").click(
+					function(){
+							var txt=$("#texxt").val();
+							var rec =$("#reci").html();
+							var reci = rec.toString();
+							var dat={
+									action : "send",
+									text : 	txt.toString() ,
+									reciever : reci
+								};
+							alert(JSON.stringify(dat));
+								socket.send(JSON.stringify(dat));
+
+						} );
+			
+			
+		</script>
+	</h:panelGroup>
+
+
+</ui:composition>

@@ -1,0 +1,169 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	template="/template/index.xhtml" xmlns:p="http://java.sun.com/jsf/html"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:z="http://primefaces.org/ui">
+
+	<ui:define name="content">
+
+
+		<section class="jobs-area">
+			<div class="container">
+				<div class="row clearfix">
+					<div class="col-md-12">
+						<div class="headings-area">
+							<h3 class="animated fadeInUp visible" data-animation="fadeInUp"
+								data-animation-delay="100">Offers</h3>
+
+							<hr class="animated fadeInUp visible" data-animation="fadeInUp"
+								data-animation-delay="100" />
+						</div>
+
+						<div class="job-list-head clearfix animated fadeInUp visible"
+							data-animation="fadeInUp" data-animation-delay="100">
+							<div class="title">Offer Title</div>
+							<div class="location">Owner</div>
+							<div class="create">Date Of Offer</div>
+							
+						</div>
+						<ul class="job-listings">
+
+							<c:forEach var="off" items="#{viewOfferBean.alloffers}">
+
+								<li class="animated" data-animation="fadeInUp"
+									data-animation-delay="100">
+									<div class="title">
+										<span class="prof-photo"><a href="single.html"><img
+												src="#{request.contextPath}/resources/img/prof-01.jpg" alt="" /></a></span> <span class="designation">
+
+											<h:outputText value="#{off.text}" /><br /> <h:outputText
+												value="#{off.adress.address}" />
+										</span>
+									</div>
+									<div class="location">
+										<h:outputText
+											value="#{off.owner.firstName} #{off.owner.lastName} " />
+											<h:form>
+											
+										<h:commandButton action="#{viewOfferBean.diplayFormButton()}" value="View Offer" >
+										<f:setPropertyActionListener value="#{off}"
+										target="#{viewOfferBean.so}"></f:setPropertyActionListener>
+										</h:commandButton>
+										</h:form>
+									</div>
+									<div class="create">
+										<h:outputText value="#{off.date}" />
+									</div>
+									
+								</li>
+							</c:forEach>
+
+
+						</ul>
+					</div>
+					<div class="col-md-12 job-breadcrumbs animated fadeInUp visible"
+						data-animation="fadeInUp" data-animation-delay="100">
+						<ul class="breadcrumbs">
+							<li><a href="#" class="active">1</a></li>
+							<li><a href="#">2</a></li>
+							<li><a href="#">3</a></li>
+							<li><a href="#">4</a></li>
+							<li><a href="#">5</a></li>
+						</ul>
+					</div>
+				</div>
+								<h:form rendered="#{viewOfferBean.displayForm}">
+								<div class="col-md-10">
+									<h3 class="animated fadeInUp visible" data-animation="fadeInUp"
+												data-animation-delay="100">Comments</h3>
+				
+											<hr class="animated fadeInUp visible" data-animation="fadeInUp"
+												data-animation-delay="100" />
+									<div class="job-list-head clearfix animated fadeInUp visible"
+										data-animation="fadeInUp" data-animation-delay="100">
+										<div><H1> Offer </H1></div>
+										<div class="title"><H5>owner : </H5><h:outputText
+											value="#{viewOfferBean.so.owner.firstName} #{viewOfferBean.so.owner.lastName}" /></div>
+											<div class="title"><H5>about : </H5><h:outputText
+											value="#{viewOfferBean.so.text}" /></div>
+										<div class="location"><H5>address : </H5><h:outputText
+											value="#{viewOfferBean.so.adress}" /></div>
+										<div class="create"><H5>date : </H5><h:outputText
+											value="#{viewOfferBean.so.date}" /></div>
+									</div>
+										<ul class="job-listings">
+										<c:forEach var="com" items="#{viewOfferBean.so.comments}">
+											<li class="animated fadeInUp visible" data-animation="fadeInUp"
+												data-animation-delay="100">
+												<div class="title">
+													<span class="prof-photo"><a href="single.html"><img
+															src="#{request.contextPath}/resources/img/prof-01.jpg" alt=""/></a></span> <span class="designation">
+														<h:outputText value="#{com.text}" />
+													</span>
+												</div>
+												<div class="location">Price: <h:outputText value="#{com.price}" /></div>
+												<div class="create">Delay: <h:outputText value="#{com.delay}" /></div>
+											</li>
+											
+							</c:forEach>
+											
+											
+										</ul >
+											<a href="#" class="load-more-jobs animated" data-animation="fadeInUp"
+												data-animation-delay="100"><h:form>
+											
+										<h:commandButton action="#{viewOfferBean.diplayFormButton1()}" value="Add Comment" >
+										</h:commandButton>
+										</h:form></a>
+										
+										<h:form rendered="#{viewOfferBean.displayForm1}">
+								<div class="col-md-12">
+									
+									
+										<ul  class="job-listings">
+											<li class="animated fadeInUp visible" data-animation="fadeInUp"
+												data-animation-delay="100">
+												<div class="title">
+												<div class="create">Text: </div>
+													 <span class="designation">
+														<h:inputText class="bookmark-btn"
+															value="#{viewOfferBean.com.text}" />
+													</span>
+													<div class="create">Price: </div>
+													<span class="designation">
+														<h:inputText class="bookmark-btn"
+															value="#{viewOfferBean.com.price}" />
+													</span>
+													<div class="create">Delay: </div>
+													<span class="designation">
+														<h:inputText class="bookmark-btn"
+															value="#{viewOfferBean.com.delay}" />
+													</span>
+												</div>
+												<div class="location"><h:commandButton action="#{viewOfferBean.addCom()}" value="Add" /></div>
+												
+											</li>
+											
+							
+											
+											
+										</ul>
+											<a href="#" class="load-more-jobs animated" data-animation="fadeInUp"
+												data-animation-delay="100"><h:form>
+											
+										
+										</h:form></a>
+										
+										
+								</div>
+						</h:form>
+							
+										
+								</div>
+						</h:form>
+			</div>
+			
+		</section></ui:define>
+</ui:composition>

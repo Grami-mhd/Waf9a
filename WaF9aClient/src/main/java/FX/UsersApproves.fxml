@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.*?>
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="875.0" prefWidth="1308.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="FX.UsersApprovesController">
+   <children>
+      <ImageView fitHeight="1121.0" fitWidth="1681.0" layoutX="-2.0" layoutY="-4.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/pexels-photo.jpg" />
+         </image>
+      </ImageView>
+      <Accordion fx:id="domains" prefHeight="1167.0" prefWidth="1952.0" AnchorPane.bottomAnchor="-74.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="-313.0" AnchorPane.topAnchor="0.0" />
+   </children>
+</AnchorPane>

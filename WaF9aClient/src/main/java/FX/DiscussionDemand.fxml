@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="FX.DiscussionDemandController">
+   <children>
+      <ImageView fitHeight="224.0" fitWidth="580.0" opacity="0.57" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/blog.png" />
+         </image>
+      </ImageView>
+      <BorderPane layoutY="14.0" prefHeight="233.0" prefWidth="580.0" AnchorPane.bottomAnchor="-14.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="14.0">
+         <center>
+            <AnchorPane BorderPane.alignment="CENTER">
+               <children>
+                  <TextArea fx:id="discussionDemand" editable="false" layoutX="9.0" layoutY="38.0" prefHeight="81.0" prefWidth="453.0" style="-fx-background-color: grey; -fx-border-color: black;" wrapText="true">
+                     <font>
+                        <Font name="System Bold Italic" size="20.0" />
+                     </font></TextArea>
+               </children>
+            </AnchorPane>
+         </center>
+         <left>
+            <ImageView fitHeight="133.0" fitWidth="108.0" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER">
+               <image>
+                  <Image url="@../images/userBig.png" />
+               </image>
+            </ImageView>
+         </left>
+         <bottom>
+            <AnchorPane prefHeight="25.0" prefWidth="367.0" BorderPane.alignment="CENTER">
+               <children>
+                  <Button layoutX="196.0" mnemonicParsing="false" onAction="#decline" style="-fx-background-color: red;" text="Decline" textFill="WHITE" />
+                  <Button layoutX="110.0" mnemonicParsing="false" onAction="#accept" style="-fx-background-color: green;" text="Accept" textFill="WHITE" />
+                  <Button mnemonicParsing="false" onAction="#viewProfile" text="View Profile" />
+               </children>
+               <BorderPane.margin>
+                  <Insets bottom="50.0" left="150.0" top="30.0" />
+               </BorderPane.margin>
+            </AnchorPane>
+         </bottom>
+      </BorderPane>
+   </children>
+</AnchorPane>

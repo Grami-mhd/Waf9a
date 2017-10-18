@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="327.0" prefWidth="451.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="FX.ForgetPassController">
+   <children>
+      <Label layoutX="34.0" layoutY="38.0" prefHeight="17.0" prefWidth="316.0" text="Please confirm your  User name and  Email" />
+      <Label layoutX="34.0" layoutY="86.0" prefHeight="17.0" prefWidth="86.0" text="User Name " />
+      <Label layoutX="34.0" layoutY="176.0" text="Email adresse " />
+      <TextField fx:id="username" layoutX="180.0" layoutY="82.0" prefHeight="25.0" prefWidth="187.0" />
+      <TextField fx:id="emaila" layoutX="180.0" layoutY="172.0" prefHeight="25.0" prefWidth="187.0" />
+      <Button fx:id="sendmail" layoutX="281.0" layoutY="256.0" mnemonicParsing="false" onAction="#sendmail" prefHeight="25.0" prefWidth="86.0" text="Confirm" />
+      <Label fx:id="erreur" layoutX="34.0" layoutY="130.0" />
+   </children>
+</AnchorPane>

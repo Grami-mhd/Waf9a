@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+
+<AnchorPane prefHeight="543.0" prefWidth="691.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="FX.OffersDemandsController">
+   <children>
+      <ImageView fitHeight="557.0" fitWidth="740.0" layoutX="-1.0" layoutY="-1.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/statistics.png" />
+         </image>
+      </ImageView>
+      <Accordion fx:id="domains" prefHeight="554.0" prefWidth="739.0" />
+   </children>
+</AnchorPane>

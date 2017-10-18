@@ -1,0 +1,72 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	template="/template/index.xhtml">
+
+	<ui:define name="content">
+		<section class="inner-full-cont">
+			<div class="container">
+				<div class="row clearfix">
+					<div class="col-md-12 full-width-area">
+						<div class="job-submission-form">
+							<h:form rendered="#{autentificationBean.logged}">
+
+								<p>
+									<label>Job Location</label>
+									<h:inputText value="#{jobBean.job.adress.address}" type="text"
+										class="input-area" />
+								</p>
+								<p>
+									<label>Job category</label> <span class="select-box"
+										style="z-index: 10;"> <h:selectOneMenu
+											value="#{jobBean.exp}" styleClass="input-area" valueChangeListener="#{jobBean.addEXP()}" onchange="submit()">
+											<f:selectItems value="#{jobBean.expertises}" var="exp"
+												itemValue="#{exp.name}" class="select-box" />
+										</h:selectOneMenu>
+
+									</span>
+									<ui:repeat var="exp" value="#{jobBean.job.expertises}">
+
+										<h:outputText value="#{exp.name}" />
+								<br/>
+									</ui:repeat>
+								</p>
+								<p>
+									<label>Job Description </label>
+									<h:inputTextarea value="#{jobBean.job.text}" type="text"
+										class="input-area" />
+								</p>
+								<p>
+									<h:commandButton action="#{jobBean.doSave()}" value="save"
+										class="input-button" />
+								</p>
+							</h:form>
+						</div>
+					</div>
+					
+				</div>
+			</div>
+		</section>
+		<section class="got-a-question">
+			<div class="container">
+				<div class="row clearfix">
+					<div class="col-md-3 call-us-head animated"
+						data-animation="fadeInLeft" data-animation-delay="200">
+						<h3>Got a Question?</h3>
+					</div>
+					<div class="col-md-6 call-us-txt animated"
+						data-animation="fadeInUp" data-animation-delay="300">
+						<p>Send us an email or call us at 1 800 555 5555</p>
+					</div>
+					<div class="col-md-3 call-us-link animated"
+						data-animation="fadeInRight" data-animation-delay="200">
+						<a href="contact.html" class="call-us-btn">CONTACT NOW</a>
+					</div>
+				</div>
+			</div>
+		</section>
+
+	</ui:define>
+
+</ui:composition>

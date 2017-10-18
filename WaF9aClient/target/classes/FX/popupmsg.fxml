@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import javafx.scene.paint.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="540.0" prefWidth="862.0" style="-fx-background-color: #dceff1;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="FX.popupmsgController">
+   <children>
+      <VBox fx:id="vboxkol" alignment="TOP_CENTER" layoutX="209.0" layoutY="82.0" prefHeight="540.0" prefWidth="617.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <HBox prefHeight="83.0" prefWidth="617.0">
+               <children>
+                  <Label text="Message" textFill="#1e8aab">
+                     <font>
+                        <Font name="System Bold" size="13.0" />
+                     </font></Label>
+                  <TextArea fx:id="msgr" prefHeight="83.0" prefWidth="809.0" />
+               </children>
+            </HBox>
+            <HBox fx:id="hboxreportedby" prefHeight="210.0" prefWidth="617.0">
+               <children>
+                  <Label prefHeight="17.0" prefWidth="149.0" text="Message reported by " textFill="#1e8aab">
+                     <font>
+                        <Font name="System Bold" size="13.0" />
+                     </font></Label>
+                  <ScrollPane fx:id="reportedby" prefHeight="210.0" prefViewportHeight="100.0" prefWidth="726.0">
+                     <content>
+                        <VBox fx:id="reports" />
+                     </content>
+                  </ScrollPane>
+               </children>
+            </HBox>
+            <VBox fx:id="vboxcheckbox" prefHeight="200.0" prefWidth="100.0">
+               <children>
+                  <CheckBox fx:id="notify" mnemonicParsing="false" text="Notify of transpassing rules">
+                     <VBox.margin>
+                        <Insets left="30.0" top="10.0" />
+                     </VBox.margin>
+                  </CheckBox>
+                  <CheckBox fx:id="msgdelete" layoutX="40.0" layoutY="10.0" mnemonicParsing="false" text="Delete Message ">
+                     <VBox.margin>
+                        <Insets left="30.0" top="20.0" />
+                     </VBox.margin>
+                  </CheckBox>
+                  <CheckBox fx:id="discudelete" layoutX="10.0" layoutY="27.0" mnemonicParsing="false" text="Delete Discussion">
+                     <VBox.margin>
+                        <Insets left="30.0" top="20.0" />
+                     </VBox.margin>
+                  </CheckBox>
+                  <CheckBox fx:id="acountdelete" layoutX="10.0" layoutY="44.0" mnemonicParsing="false" text="Block Account">
+                     <VBox.margin>
+                        <Insets left="30.0" top="20.0" />
+                     </VBox.margin>
+                  </CheckBox>
+               </children>
+            </VBox>
+            <HBox alignment="CENTER_RIGHT">
+               <children>
+                  <Button mnemonicParsing="false" onAction="#decline" prefHeight="25.0" prefWidth="135.0" style="-fx-background-color: #d33030;" text="Decline" textFill="#eeeeee">
+                     <HBox.margin>
+                        <Insets right="20.0" />
+                     </HBox.margin>
+                     <padding>
+                        <Insets left="10.0" />
+                     </padding>
+                  </Button>
+                  <Button fx:id="apply" mnemonicParsing="false" onAction="#validate" prefHeight="25.0" prefWidth="133.0" style="-fx-background-color: #32893c;" text="Validate">
+                     <HBox.margin>
+                        <Insets right="20.0" />
+                     </HBox.margin>
+                     <textFill>
+                        <RadialGradient centerX="0.5" centerY="0.5" radius="0.5">
+                           <stops>
+                              <Stop color="WHITE" />
+                              <Stop color="WHITE" offset="1.0" />
+                           </stops>
+                        </RadialGradient>
+                     </textFill>
+                  </Button>
+               </children>
+            </HBox>
+         </children>
+      </VBox>
+   </children>
+</AnchorPane>

@@ -1,0 +1,94 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	template="/template/index.xhtml">
+
+	<ui:define name="content">
+		<h:panelGroup rendered="#{autentificationBean.logged}">
+			<section class="inner-headings">
+				<div class="container">
+					<h3 class="animated" data-animation="fadeInUp"
+						data-animation-delay="100">
+						Welcome back to your chat room Mr.
+						<h:outputText value="#{autentificationBean.user.firstName}" />
+					</h3>
+					<h5 class="uppercase animated" data-animation="fadeInUp"
+						data-animation-delay="200">in here you are able to make a
+						conversation with any of your contacts</h5>
+					<hr class="animated" data-animation="fadeInUp"
+						data-animation-delay="300" />
+				</div>
+			</section>
+
+			<section class="inner-main-cont">
+				<div class="container">
+					<div class="row clearfix">
+						<div class="col-md-6">
+						<h:outputText id="reci" value="#{chatBean.reciever}" />
+							<div id="msgs"
+								style="position: relative; border: solid 4px grey; height: 600px; width: 500px; overflow: auto;">
+								
+								<h5 class="uppercase animated" data-animation="fadeInUp"
+									data-animation-delay="100">
+									<p id="user" style="text-align: right; margin-bottom: 10" title="heloopohoq">Hii friend</p>
+								</h5>
+								<h5 class="uppercase animated" data-animation="fadeInUp"
+									data-animation-delay="100">									
+									hi you're fine ?
+								</h5>
+								<h5 class="uppercase animated" data-animation="fadeInUp"
+									data-animation-delay="100">
+									<p id="user" style="text-align: right; margin-bottom: 10" title="heloopohoq">yess thks, who's work</p>
+								</h5>
+								<h5 class="uppercase animated" data-animation="fadeInUp"
+									data-animation-delay="100">									
+									i'm doing great thks :)
+								</h5>
+							</div>
+							<form styleClass="contact-form">
+
+								<p class="animated" data-animation="fadeInUp"
+									data-animation-delay="100">
+									<input id="texxt" type="text" class="input-area" />
+								</p>
+
+								<p class="animated" data-animation="fadeInUp"
+									data-animation-delay="400">
+									<input type="button" id="sendmsg" class="input-button" />
+
+								</p>
+
+							</form>
+						</div>
+						<div class="col-md-6">
+							<div class="contact-address">
+								<h3 class="animated" data-animation="fadeInUp"
+									data-animation-delay="100">Friends</h3>
+								<h:form>
+								<c:forEach var="em" items="#{chatBean.loggedFriends}">
+									<h5 class="animated" data-animation="fadeInUp"
+										data-animation-delay="200">
+										<a href="" onclick="getMessages('#{em.key}')"> <p id="reciever"> <h:commandLink action="#{chatBean.recieverput(em.key)}"
+												value="#{em.key}" /></p></a>
+
+										<h:graphicImage value="/resources/img/sara.png"
+											rendered="#{em.value}" />
+									</h5>
+
+								</c:forEach>
+</h:form>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+
+
+
+
+
+		</h:panelGroup>
+	</ui:define>
+</ui:composition>

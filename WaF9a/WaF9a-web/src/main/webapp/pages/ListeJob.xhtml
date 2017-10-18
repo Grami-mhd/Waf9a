@@ -1,0 +1,103 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui" template="/template/index.xhtml">
+
+	<ui:define name="content">
+		<h:panelGroup rendered="#{autentificationBean.logged}">
+			<section class="jobs-area">
+				<div class="container">
+					<div class="row clearfix">
+						<div class="col-md-12">
+							<div class="headings-area">
+								<h3 class="animated" data-animation="fadeInUp"
+									data-animation-delay="100">Jobs WeF9a</h3>
+								<h5 class="uppercase animated" data-animation="fadeInUp"
+									data-animation-delay="100">
+									found
+									<h:outputText value="#{jobBean.user.offers.size()}" />
+									Offer
+								</h5>
+								<hr class="animated" data-animation="fadeInUp"
+									data-animation-delay="100" />
+							</div>
+							<div class="job-list-head clearfix animated"
+								data-animation="fadeInUp" data-animation-delay="100">
+								<div class="title">Offer</div>
+								<div class="location">Loccation</div>
+								<div class="create">Date</div>
+							</div>
+
+
+							<ul class="job-listings">
+								<ui:repeat var="job" value="#{autentificationBean.user.offers}">
+									<li class="animated" data-animation="fadeInUp"
+										data-animation-delay="100"><h:form>
+
+											<h:commandLink action="#{jobBean.viewjob(job)}">
+
+												<div class="title">
+													<span class="prof-photo"></span> <span
+														class="designation"> <a>Offer is about</a><br />
+
+
+														Description : <h:outputText value="#{job.text}" />
+													</span>
+												</div>
+											</h:commandLink>
+										</h:form>
+										<div class="location">
+											<h:outputText value="#{job.date.toLocaleString()}" />
+										</div> <h:form>
+											<div class="create">
+												<h:commandLink action="#{jobBean.doDelete(job)}">
+													<h:graphicImage value="/resources/img/removepng.png" />
+												</h:commandLink>
+											</div>
+										</h:form> <h:panelGroup rendered="#{jobBean.fu(job)}">
+											<table>
+												<ui:repeat var="comment" value="#{job.comments}">
+													<tr>
+														<td>
+															<blockquote>
+																<p>
+																<h:form>
+																	<h:commandLink action="#{redirectionsBean.gotoUser(comment.owner)}" title="view profile" value="#{comment.owner.userName}" />
+																	</h:form>
+																	<br /> Description :
+																	<h:outputText value="#{comment.text}" />
+																</p>
+																<small> Price : <h:outputText
+																		value="#{comment.price}" /> <br /> Delay : <h:outputText
+																		value="#{comment.delay}" /> <br /> Date : <h:outputText
+																		value="#{comment.date.toLocaleString()}" />
+																</small>
+															</blockquote>
+														</td>
+
+														<hr />
+														<td><h:form>
+																<h:commandLink action="#{jobBean.closeJob(comment)}"
+																	 ><h:graphicImage value="/resources/img/deal.png" title="close the deal for #{comment.owner.firstName}" /> </h:commandLink>
+															</h:form></td>
+													</tr>
+												</ui:repeat>
+											</table>
+										</h:panelGroup></li>
+								</ui:repeat>
+
+							</ul>
+						</div>
+					</div>
+				</div>
+			</section>
+		</h:panelGroup>
+
+
+
+
+
+	</ui:define>
+
+</ui:composition>

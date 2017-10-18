@@ -1,0 +1,43 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:p="http://primefaces.org/ui">
+	
+	<h:link onclick="#{notificationsBean.getallNotifications()}"  />
+	<div id="notifications" style="display: none">
+		<h:form>
+		<h3><h:commandLink action="#{notificationsBean.findAllNotifs()}"  > Notifications</h:commandLink></h3>
+		</h:form>
+		
+		<hr />	
+		<div>
+			<ui:repeat var="notif" value="#{notificationsBean.notifications}">
+				<h:form action="">
+					<table>
+						<tr>
+							<td><h:commandLink action="#{notificationsBean.Seen(notif)}">
+									<blockquote >
+										<p>
+											<h:outputText value="#{notif.text}" />
+										</p>
+										<small> <h:outputText value="#{notif.date.toString()}" />
+										</small>
+									</blockquote>
+								</h:commandLink></td>
+							<td><h:graphicImage value="/resources/img/bell.png"
+									rendered="#{notif.seen}" /></td>
+						</tr>
+
+					</table>
+
+				</h:form>
+
+				<hr />
+			</ui:repeat>
+		</div>
+	</div>
+
+
+</ui:composition>

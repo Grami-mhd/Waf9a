@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="600.0" prefWidth="918.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="FX.reportsCommentController">
+   <children>
+      <BorderPane layoutX="95.0" layoutY="6.0" prefHeight="600.0" prefWidth="698.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <top>
+            <HBox prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+               <children>
+                  <ImageView fitHeight="153.0" fitWidth="130.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../images/userBig.png" />
+                     </image>
+                  </ImageView>
+                  <Pane prefHeight="130.0" prefWidth="797.0">
+                     <children>
+                        <TextArea fx:id="offer" editable="false" layoutY="45.0" prefHeight="85.0" prefWidth="774.0" />
+                        <Label layoutX="14.0" layoutY="6.0" text="Offer owner:">
+                           <font>
+                              <Font name="System Bold" size="12.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="30.0" layoutY="25.0" prefHeight="17.0" prefWidth="40.0" text="Date:">
+                           <font>
+                              <Font name="System Bold" size="12.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="date" layoutX="96.0" layoutY="25.0" text="date" />
+                        <Label fx:id="user" layoutX="96.0" layoutY="8.0" text="user" />
+                     </children>
+                  </Pane>
+               </children>
+            </HBox>
+         </top>
+         <center>
+            <ScrollPane prefViewportHeight="470.0" prefViewportWidth="918.0">
+               <content>
+                  <VBox fx:id="comments" style=": ;" BorderPane.alignment="CENTER" />
+               </content>
+            </ScrollPane>
+         </center>
+      </BorderPane>
+   </children>
+</AnchorPane>

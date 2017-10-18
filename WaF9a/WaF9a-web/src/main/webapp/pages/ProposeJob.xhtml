@@ -1,0 +1,78 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+	template="/template/index.xhtml">
+
+	<ui:define name="content">
+		<h:panelGroup rendered="#{autentificationBean.logged}">
+
+
+			
+
+	<div class="wrapper" id="sb-site">
+
+		<section class="inner-headings">
+			<div class="container text-center">
+				<h3 class="animated" data-animation="fadeInUp"
+					data-animation-delay="100">Propose a Job</h3>
+				<h5 class="uppercase animated" data-animation="fadeInUp"
+					data-animation-delay="200">WeF9a is your choice</h5>
+				<hr class="animated" data-animation="fadeInUp"
+					data-animation-delay="300" />
+			</div>
+		</section>
+		<section class="inner-full-cont">
+			<div class="container">
+				<div class="row clearfix">
+					<div class="col-md-12 full-width-area">
+						<div class="job-submission-form">
+							<h:form>
+								<p>
+									<label>Job Duration</label> <h:inputText value="#{proposedJobBean.pj.duration}" class="input-area" />
+								</p>
+								<p>
+									<label>Decriptions</label>
+									<h:inputTextarea  value="#{proposedJobBean.pj.text}" rows="15" cols="15"  styleClass="text-area"></h:inputTextarea>
+								</p>
+								<p>
+									<label>Job Price</label> <h:inputText value="#{proposedJobBean.pj.price}"
+										class="input-area" />
+								</p>
+								<p>
+									<label></label> <h:commandButton action="#{proposedJobBean.proposejob()}" value="Submit"  styleClass="input-button"/> 
+								</p>
+							</h:form>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+		<section class="got-a-question">
+			<div class="container">
+				<div class="row clearfix">
+					<div class="col-md-3 call-us-head animated"
+						data-animation="fadeInLeft" data-animation-delay="200">
+						<h3>Got a Question?</h3>
+					</div>
+					<div class="col-md-6 call-us-txt animated"
+							data-animation="fadeInUp" data-animation-delay="300">
+							<p>
+								Send us an email on :
+								<h:outputText value="#{claimBean.atb.user.email}" />
+							</p>
+						</div>
+					<div class="col-md-3 call-us-link animated"
+						data-animation="fadeInRight" data-animation-delay="200">
+						<a href="contact.html" class="call-us-btn">CONTACT NOW</a>
+					</div>
+				</div>
+			</div>
+		</section>	
+	</div>
+	
+		</h:panelGroup>
+	</ui:define>
+
+</ui:composition>

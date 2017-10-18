@@ -1,0 +1,77 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	template="/template/index.xhtml">
+
+	<ui:define name="content">
+		<h:panelGroup rendered="#{autentificationBean.logged}">
+			<section class="jobs-area">
+				<div class="container">
+					<div class="row clearfix">
+						<div class="col-md-12">
+							<div class="headings-area">
+								<h3 class="animated" data-animation="fadeInUp"
+									data-animation-delay="100">Your Notifications</h3>
+								<h5 class="uppercase animated" data-animation="fadeInUp"
+									data-animation-delay="100">
+									Total
+									<h:outputText value="#{notificationsBean.allNitifs.size()}" />
+									notification
+								</h5>
+								<hr class="animated" data-animation="fadeInUp"
+									data-animation-delay="100" />
+							</div>
+
+							<div class="job-list-head clearfix animated"
+								data-animation="fadeInUp" data-animation-delay="100">
+
+								<div class="title">
+
+									<h:form>
+										<h:commandLink action="#{notificationsBean.seeAll()}">
+											<h4> MarK All As ReaD</h4>
+											 </h:commandLink>
+									</h:form>
+								</div>
+								<div class="location">Date</div>
+								<div class="create">delete</div>
+
+							</div>
+							<ul class="job-listings">
+								<ui:repeat var="notif" value="#{notificationsBean.allNitifs}">
+									<h:form>
+										<h:commandLink action="#{notificationsBean.seenNot(notif)}">
+
+											<li class="animated" data-animation="fadeInUp"
+												data-animation-delay="100">
+												<div class="title">
+													<span class="prof-photo"> <h:graphicImage
+															value="/resources/img/bell.png" rendered="#{notif.seen}" />
+													</span> <span class="designation"> <h:outputText
+															value="#{notif.text}" />
+													</span>
+												</div>
+												<div class="location">
+													<h:outputText value="#{notif.date.toLocaleString()}" />
+												</div>
+												<div class="create">
+													<h:commandLink
+														action="#{notificationsBean.deleteNotif(notif)}"
+														value="delete" />
+												</div>
+											</li>
+										</h:commandLink>
+									</h:form>
+								</ui:repeat>
+							</ul>
+						</div>
+
+					</div>
+				</div>
+			</section>
+		</h:panelGroup>
+
+
+	</ui:define>
+</ui:composition>

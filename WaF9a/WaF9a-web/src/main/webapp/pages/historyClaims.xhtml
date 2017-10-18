@@ -1,0 +1,156 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	template="/template/index.xhtml">
+
+
+	<ui:define name="content">
+		<h:panelGroup rendered="#{autentificationBean.logged}">
+
+			<section class="jobs-area">
+				<div class="container">
+					<div class="row clearfix">
+						<div class="col-md-12">
+							<div class="headings-area">
+								<h3 class="animated" data-animation="fadeInUp"
+									data-animation-delay="100">Jobs WeF9a</h3>
+								<h5 class="uppercase animated" data-animation="fadeInUp"
+									data-animation-delay="100">
+									found
+									<h:outputText value="#{claimBean.sd.size()}" />
+									Claims
+								</h5>
+								<hr class="animated" data-animation="fadeInUp"
+									data-animation-delay="100" />
+							</div>
+							<div class="job-list-head clearfix animated"
+								data-animation="fadeInUp" data-animation-delay="100">
+								<div class="title">Claims</div>
+								<div class="location">Status</div>
+								<div class="create">Date</div>
+							</div>
+							<ul class="job-listings">
+								<ui:repeat var="claim" value="#{claimBean.sd}">
+
+									<li class="animated" data-animation="fadeInUp"
+										data-animation-delay="100">
+										<div class="title">
+										
+
+												<h:form>
+													<span class="prof-photo"><a href="single.html"><img
+															src="../resources/img/claim.png" alt="" /></a></span>
+													<span class="designation"> <h:commandLink
+															action="userView?faces-redirect=true"
+															value="Claim is about">
+															<f:actionListener
+															binding="#{claimBean.seeClaimedAbout(claim)}" />
+															</h:commandLink>
+															<br />
+															<h:outputText value="#{claim.text}" /></span>
+												</h:form>
+												</div>
+										<!--  		<span class="prof-photo"><a href="single.html"><img
+														src="../resources/img/claim.png" alt="" /></a></span>
+												<span class="designation"> <h:commandLink
+														action="#{claimBean.seeClaimedAbout(claim)}"
+														value="Claim is about">
+														</h:commandButton>
+														<br />
+														<h:outputText value="#{claim.text}" /></span> -->
+										
+										<div class="location">
+											<h:outputText value="#{claim.status}" />
+										</div>
+										<div class="create">
+											<h:outputText value="#{claim.date.toString()}" />
+										</div>
+									</li>
+								</ui:repeat>
+								<!--    <li class="animated" data-animation="fadeInUp"
+								data-animation-delay="100">
+								<div class="title">
+									<span class="prof-photo"><a href="single.html"><img
+											src="img/prof-02.jpg" alt=""/></a></span> <span class="designation">
+										<a href="single.html">wordpress developer</a><br/>Behance
+									
+									</span>
+								</div>
+								<div class="location">New York, USA</div>
+								<div class="create">2 days ago</div>
+							</li>
+							<li class="animated" data-animation="fadeInUp"
+								data-animation-delay="100">
+								<div class="title">
+									<span class="prof-photo"><a href="single.html"><img
+											src="img/prof-03.jpg" alt=""/></a></span> <span class="designation">
+										<a href="single.html">web designer</a><br/>Dribbble 
+									</span>
+								</div>
+								<div class="location">California, USA</div>
+								<div class="create">3 days ago</div>
+							</li>
+							<li class="animated" data-animation="fadeInUp"
+								data-animation-delay="100">
+								<div class="title">
+									<span class="prof-photo"><a href="single.html"><img
+											src="img/prof-04.jpg" alt=""/></a></span> <span class="designation">
+										<a href="single.html">MEAN developer</a><br/>Themeforest 
+									</span>
+								</div>
+								<div class="location">New York, USA</div>
+								<div class="create">05-02-2015</div>
+							</li>
+							<li class="animated" data-animation="fadeInUp"
+								data-animation-delay="100">
+								<div class="title">
+									<span class="prof-photo"><a href="single.html"><img
+											src="img/prof-05.jpg" alt=""/></a></span> <span class="designation">
+										<a href="single.html">print designer</a><br/>Themeforest 
+									</span>
+								</div>
+								<div class="location">New York, USA</div>
+								<div class="create">05-02-2015</div>
+							</li>
+							<li class="animated" data-animation="fadeInUp"
+								data-animation-delay="100">
+								<div class="title">
+									<span class="prof-photo"><a href="single.html"><img
+											src="img/prof-06.jpg" alt=""/></a></span> <span class="designation">
+										<a href="single.html">java developer</a><br/>Codecanyon
+											Labs 
+									</span>
+								</div>
+								<div class="location">Canada</div>
+								<div class="create">05-02-2015</div>
+							</li>  -->
+							</ul>
+						</div>
+					</div>
+				</div>
+			</section>
+			<section class="got-a-question">
+				<div class="container">
+					<div class="row clearfix">
+						<div class="col-md-3 call-us-head animated"
+							data-animation="fadeInLeft" data-animation-delay="200">
+							<h3>Got a Question?</h3>
+						</div>
+						<div class="col-md-6 call-us-txt animated"
+							data-animation="fadeInUp" data-animation-delay="300">
+							<p>
+								Send us an email on:
+								<h:outputText value="#{claimBean.atb.user.email}" />
+							</p>
+						</div>
+						<div class="col-md-3 call-us-link animated"
+							data-animation="fadeInRight" data-animation-delay="200">
+							<a href="contact.html" class="call-us-btn">CONTACT NOW</a>
+						</div>
+					</div>
+				</div>
+			</section>
+		</h:panelGroup>
+	</ui:define>
+</ui:composition>
