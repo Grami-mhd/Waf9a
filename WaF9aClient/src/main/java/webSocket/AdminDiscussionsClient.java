@@ -78,8 +78,6 @@ public class AdminDiscussionsClient {
 		System.out.println(message);
 		JsonReader reader = Json.createReader(new StringReader(message));
 		JsonObject jsonMessage = reader.readObject();
-		
-		System.out.println("hhhhhhhhhhh");
 		AdminMessage msg = new AdminMessage();
 		msg.setDate(jsonMessage.getString("date"));
 		msg.setUserName(jsonMessage.getString("userName"));
